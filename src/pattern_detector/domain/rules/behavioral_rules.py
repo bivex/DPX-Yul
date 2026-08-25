@@ -139,7 +139,7 @@ class MediatorEscrowAtomicSwapRule(BaseRule):
     def evaluate(self, model: CodeModel) -> list[Detection]:
         detections: list[Detection] = []
         for fn in model.all_functions:
-            if ("escrow" in fn.name.lower() or "swap" in fn.name.lower() or "settle" in fn.name.lower()) and ("call(" in fn.body and "transfer" in fn.raw_text.lower()):
+            if ("escrow" in fn.name.lower() or "swap" in fn.name.lower() or "settle" in fn.name.lower()) and "call(" in fn.body:
                 evidences = [
                     Evidence(
                         rule_code="BEHAVIORAL_MEDIATOR_ESCROW_SWAP",
